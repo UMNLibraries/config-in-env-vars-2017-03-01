@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Config in Env Vars presentation to UMN Libraries Web Dev, March 1 2017.">
+    <meta name="author" content="David Naughton">
+
+
+		<title>Config in Env Vars</title>
+
+		<link rel="stylesheet" href="revealjs/css/reveal.css">
+		<link rel="stylesheet" href="revealjs/css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="revealjs/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'revealjs/css/print/pdf.css' : 'revealjs/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <section>
+          <h1>Config in Env Vars</h1>
+          <p>March 1 2017</p>
+          <p>
+            <small>David Naughton - UMN Libraries Web Development</small>
+          </p>
+          <p>
+            <small><a href="mailto:naughton@umn.edu">naughton@umn.edu</a></small>
+          </p>
+        </section>
+
+				<section>
+          <h1>How?</h1>
+          <p class="fragment">For us, for now, in most cases, put config in <code>.env</code> files...</p>
+          <pre class="fragment"><code data-noescape class="bash">
+DB_USER="$user"
+DB_PASS="$password"
+DB_SERVICE_NAME="hoteltst.oit"
+          </code></pre>
+          <p class="fragment">...and use already-existing code to parse them.</p>
+        </section>
+
+				<section>
+          <h1>Why?</h1>
+          <ul>
+            <li class="fragment">Re-use existing code. Delete custom code.</li>
+            <li class="fragment">Emerging standard: <a href="https://12factor.net/config">Twelve-Factor App: Config</a></li>
+            <li class="fragment">Platform-, framework-, language-agnostic.</li>
+            <li class="fragment">Easy to override config with local env vars.</li>
+          </ul>
+        </section>
+
+				<section>
+          <h1>Other Platforms</h1>
+          <h2><a href="https://devcenter.heroku.com/articles/config-vars">Heroku</a></h2>
+          <pre><code data-noescape class="bash">$ heroku config:set S3_KEY=8N029N81 S3_SECRET=9s83109d3+583493190</code></pre>
+          <h2><a href="https://docs.docker.com/compose/environment-variables/">Docker Compose</a></h2>
+          <p>Many methods to set env vars, including .env files.</p>
+        </section>
+
+				<section>
+          <h1>Thank you!</h1>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="revealjs/lib/js/head.min.js"></script>
+		<script src="revealjs/js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'revealjs/plugin/markdown/marked.js' },
+					{ src: 'revealjs/plugin/markdown/markdown.js' },
+					{ src: 'revealjs/plugin/notes/notes.js', async: true },
+					{ src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
